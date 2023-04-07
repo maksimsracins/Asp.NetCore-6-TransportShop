@@ -1,0 +1,25 @@
+﻿@model TransportRent.ViewModels.VehicleListViewModel
+
+<style>
+    .img{
+        width:100px;
+        height:100px;
+        object-fit:scale-down;
+    }
+</style>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row">
+
+        @foreach (var vehicle in Model.Vehicles) {
+
+            <div class="col-3">
+                <div class="p-0 border bg-light">
+                    <img src="@vehicle.Image" class="card-img-top" alt="@vehicle.Model" width="300px" height="150px">
+                    <a asp-controller="Vehicle" asp-action="List" asp-route-id="@vehicle.Id">@vehicle.Model</a>
+                    <h2 class="text-nowrap">@vehicle.PricePerHour.ToString("c")</h2>
+                </div>
+            </div>
+        }
+    </div>
+</div>
